@@ -78,7 +78,7 @@ def set_logfile(config, args):
     if config['exp_type'] == 'vary_mg':
         log_filename = 'log/fmg_%s_%s_split%s_reg%s.log' % (config['dt'], config['exp_type'], config['sn'], config['reg'])
     config['log_filename'] = log_filename
-    init_logger('', config['log_filename'], logging.INFO, False)
+    # init_logger('', config['log_filename'], logging.INFO, False)
 
 def init_exp_configs(config_filename):
     '''
@@ -139,8 +139,8 @@ def run():
 
     config = init_exp_configs(args.config)
     update_configs(config, args)
-    set_logfile(config, args)
-
+    # set_logfile(config, args)
+    data_loader = DataLoader(config)
 
     if config['exp_type'] in ['vary_reg', 'mp_vary_reg']:
         run_vary_reg(config, data_loader)
